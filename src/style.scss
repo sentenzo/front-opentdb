@@ -1,3 +1,5 @@
+@import "./palette.scss";
+
 body {
   font-family: 'Karla', sans-serif;
 }
@@ -24,11 +26,21 @@ body,
 #root {
   height: 100%;
   width: 100%;
+  background-color: $color_white;
+  color: $color_dark;
 }
 
 button {
   border: none;
   cursor: pointer;
+  background-color: $color_regular;
+  color: $color_white;
+  border-radius: 10px;
+  padding: 4px 12px;
+
+  &:hover {
+    background-color: lighten($color_regular, 4%);
+  }
 }
 
 // #root {
