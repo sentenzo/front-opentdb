@@ -1,16 +1,53 @@
+@import "../../../palette.scss";
+
 .question {
-    input[type="radio"] {
-        // display: none;
+    // padding-bottom: 10px;
+    border-bottom: 2px solid $color-light-gray;
+    margin-bottom: 16px;
 
-        +label {
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 2px 4px;
-            cursor: pointer;
-        }
+    .options {
+        padding: 24px 0;
 
-        &:checked+label {
-            font-weight: 700;
+        input[type="radio"] {
+            display: none;
+
+            +label {
+                background-color: $color-white;
+                border: 1px solid $color-regular;
+                padding: 4px 16px;
+                cursor: pointer;
+                border-radius: 10px;
+                margin: 0 8px;
+
+                user-select: none;
+            }
+
+            &:checked+label {
+                background-color: $color-bright;
+                border: 1px solid $color-bright;
+                // font-weight: 700;
+            }
         }
     }
+}
+
+.question.verification .options input[type="radio"] {
+    +label {
+        border: 1px solid lighten($color-dark, 20%);
+        color: lighten($color-dark, 20%);
+    }
+
+    &:checked+label {
+        border: 1px solid $color-ruddy;
+        color: lighten($color-dark, 20%);
+        background-color: $color-ruddy;
+    }
+
+    &.correct+label {
+        border: 1px solid $color-jade;
+        background-color: $color-jade;
+        color: $color-dark;
+    }
+
+
 }
