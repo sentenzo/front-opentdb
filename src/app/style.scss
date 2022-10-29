@@ -1,0 +1,14 @@
+.app {
+    // background-color: #cfb;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    >.content {
+        // background-color: gray;
+        max-width: 720px;
+
+    }
+}
