@@ -8,8 +8,8 @@ const Quiz = ({ questions_count = 5 }) => {
     return (
         <div className="quiz">
             {questions}
-            <div>
-                <p>You scored 3/5 correct answers</p>
+            <div className="quiz-footer">
+                <p className="status-line">You scored 3/5 correct answers</p>
                 <button>Check answers</button>
             </div>
         </div>
