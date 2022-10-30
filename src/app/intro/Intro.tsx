@@ -1,7 +1,7 @@
 // import { QuizState } from "../state";
 import "./style.scss"
 
-interface IntroProps {
+type IntroProps = {
     launch_new_quiz: () => void
 }
 

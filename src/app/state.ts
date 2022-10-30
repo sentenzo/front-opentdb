@@ -12,20 +12,23 @@ export enum QQDifficalty {
     Hard,
 }
 
-export interface QQuestion {
+export type QQuestion = {
     text: string,
     correct_answer: string,
     incorrect_answers: string[],
     users_answer?: string,
     difficulty: QQDifficalty,
 }
-export interface QState {
+export type QState = {
     stage: QStage,
-    questions?: QQuestion[],
+    questions: QQuestion[],
 }
 
-export const get_init_state = (): QState => ({ stage: QStage.Intro });
+export const get_init_state = (): QState => ({ stage: QStage.Intro, questions: [] });
 
+const get_opentdb_data = () => {
+    return opentdb_data.results;
+};
 export class mutate {
     static start_quiz(state: QState): QState {
         return {

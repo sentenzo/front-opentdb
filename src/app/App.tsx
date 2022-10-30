@@ -20,7 +20,11 @@ function App() {
             ?
             <Intro launch_new_quiz={launch_new_quiz} />
             :
-            <Quiz />
+            <Quiz
+              quiz_state={quiz_state}
+              launch_new_quiz={launch_new_quiz}
+              check_quiz={check_quiz}
+            />
         }
       </div>
     </div>
