@@ -1,7 +1,11 @@
 // import { QuizState } from "../state";
 import "./style.scss"
 
-const Intro = () => (
+interface IntroProps {
+    launch_new_quiz: () => void
+}
+
+const Intro = ({ launch_new_quiz }: IntroProps) => (
     <div className="intro">
         <h1>Random quiz generator</h1>
         <div className="description">
@@ -9,7 +13,9 @@ const Intro = () => (
             <p>click the button below</p>
             <p>↓</p>
         </div>
-        <button>Start quiz</button>
+        <button
+            onClick={(e) => { e.preventDefault(); launch_new_quiz(); }}
+        >Start quiz</button>
     </div>
 );
 

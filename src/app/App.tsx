@@ -3,21 +3,22 @@ import Intro from './intro/Intro';
 import Quiz from './quiz/Quiz';
 import Question from './quiz/question/Question';
 
-import { QuizState, QuizStage } from './state';
+import { get_init_state, mutate, QStage } from './state';
 
 import "./style.scss"
 
 
 function App() {
-  const [quiz_stage, set_quiz_stage] = React.useState(new QuizState());
+  const [quiz_state, set_quiz_state] = React.useState(get_init_state());
+  const launch_new_quiz = () => set_quiz_state(state => mutate.start_quiz(state));
+  const check_quiz = () => set_quiz_state(state => mutate.check_quiz(state));
   return (
     <div className="app">
       <div className='content'>
-        {/* <Question /> */}
         {
-          quiz_stage.stage === QuizStage.Intro
+          quiz_state.stage === QStage.Intro
             ?
-            <Intro />
+            <Intro launch_new_quiz={launch_new_quiz} />
             :
             <Quiz />
         }
