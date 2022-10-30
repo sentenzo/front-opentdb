@@ -1,4 +1,5 @@
-{
+
+const opentdb_data = {
     "response_code": 0,
     "results": [
         {
@@ -119,3 +120,5 @@
         }
     ]
 }
+
+export default opentdb_data;
