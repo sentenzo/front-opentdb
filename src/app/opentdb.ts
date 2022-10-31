@@ -37,11 +37,12 @@ export type OpenTdbDataQuestion = {
 
 export class OpenTdb {
     static root: string = "https://opentdb.com/api.php"
-    static provide_data(consumer: (questions: OpenTdbDataQuestion[]) => void, amount: number = 10) {
+    static provide_data(consumer: (questions: OpenTdbDataQuestion[]) => void, amount: number = 5) {
         fetch(`${this.root}?amount=${amount}`)
             .then((response) => response.json())
             .then((data: OpenTdbData) => data.results)
             .then(questions => questions.map(q => {
+                q.question = decodeHTMLEntities(q.question);
                 q.correct_answer = decodeHTMLEntities(q.correct_answer);
                 q.incorrect_answers = q.incorrect_answers.map(decodeHTMLEntities);
                 return q;

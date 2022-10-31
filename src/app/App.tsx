@@ -15,7 +15,7 @@ function App() {
   };
   React.useEffect(() => {
     if (quiz_state.stage === QStage.Quiz && quiz_state.questions.length === 0) {
-      OpenTdb.provide_data(mutate.get_opentdb_consumer(set_quiz_state), 4);
+      OpenTdb.provide_data(mutate.get_opentdb_consumer(set_quiz_state));
     }
   }, [quiz_state]);
 
