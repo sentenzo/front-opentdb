@@ -4,6 +4,7 @@
   "description": "A frontend for the Open Trivia DB API (it's a collection of quiz questions)",
   "author": "sentenzo (kassiyskley@rambler.ru)",
   "license": "MIT",
+  "homepage": "https://sentenzo.github.io/front-opentdb/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
