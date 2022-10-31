@@ -1,4 +1,4 @@
-import opentdb_data from "../data";
+import { OpenTdbDataQuestion } from "./opentdb";
 
 export enum QStage {
     Intro,
@@ -7,16 +7,15 @@ export enum QStage {
 }
 
 export enum QQDifficalty {
-    Easy,
-    Medium,
-    Hard,
+    Easy = "easy",
+    Medium = "medium",
+    Hard = "hard",
 }
 
 export type QQuestion = {
     text: string,
-    correct_answer: string,
-    incorrect_answers: string[],
-    users_answer?: string,
+    options: string[],
+    correct_option_index: number,
     difficulty: QQDifficalty,
 }
 export type QState = {
@@ -26,35 +25,38 @@ export type QState = {
 
 export const get_init_state = (): QState => ({ stage: QStage.Intro, questions: [] });
 
-const get_opentdb_data = () => {
-    return opentdb_data.results;
-};
+
 export class mutate {
+    static get_opentdb_consumer(state_changer: (func: (state: QState) => QState) => void) {
+        return (questions: OpenTdbDataQuestion[]) => {
+            const new_questions = questions.map(question => {
+                const options: string[] = [];
+                const correct_option: number = Math.floor(
+                    Math.random() * (question.incorrect_answers.length + 1));
+                for (const incorrect_answer of question.incorrect_answers) {
+                    if (options.length === correct_option) {
+                        options.push(question.correct_answer);
+                    }
+                    options.push(incorrect_answer);
+                }
+                const qq: QQuestion = {
+                    text: question.question,
+                    difficulty: (QQDifficalty as any)[question.difficulty],
+                    options: options,
+                    correct_option_index: correct_option,
+                };
+                return qq;
+            });
+            state_changer((old_state: QState) => ({
+                ...old_state,
+                questions: new_questions,
+            }));
+        };
+    }
     static start_quiz(state: QState): QState {
         return {
             stage: QStage.Quiz,
-            questions: [
-                {
-                    text: "In the TV show &#039;M*A*S*H&#039;, what was the nickname of Corporal Walter O&#039;Reilly?",
-                    correct_answer: "Radar",
-                    incorrect_answers: [
-                        "Hawkeye",
-                        "Hot Lips",
-                        "Trapper"
-                    ],
-                    difficulty: QQDifficalty.Easy
-                },
-                {
-                    text: "In the 1984 movie &quot;The Terminator&quot;, what model number is the Terminator portrayed by Arnold Schwarzenegger?",
-                    correct_answer: "T-800",
-                    incorrect_answers: [
-                        "I-950",
-                        "T-888",
-                        "T-1000"
-                    ],
-                    difficulty: QQDifficalty.Medium
-                }
-            ]
+            questions: []
         }
     }
 

@@ -4,7 +4,6 @@ import Question from "./question/Question"
 import "./style.scss"
 import { nanoid } from "nanoid";
 import { QState } from "../state";
-import { decodeHTMLEntities } from "../misc"
 
 type QuizProps = {
     quiz_state: QState,
@@ -14,39 +13,25 @@ type QuizProps = {
 
 const Quiz = ({ quiz_state, launch_new_quiz, check_quiz }: QuizProps) => {
 
-    // const questions = Array.apply(null, Array(5))
-    //     .map(i => <Question
-    //         key={nanoid()}
-    //         question="Question text???"
-    //         options={["option 1", "option 22", "option 3", "option 4"]}
-    //         on_check={on_check}
-    //     />);
+    const [answers, set_answers] = React.useState<(number | undefined)[]>(
+        Array.from({ length: quiz_state.questions.length }, () => undefined)
+    );
 
-    const questions_qount = quiz_state.questions.length;
-    const [answers, set_answers] = React.useState(Array.apply(null, Array(questions_qount)));
     const on_check = (question_index: number) =>
-        (answer: string) =>
+        (option_index: number) =>
             set_answers(anss => {
                 const new_answers = [...anss];
-                new_answers[question_index] = answer;
-                return new_answers
-            }
-            );
+                new_answers[question_index] = option_index;
+                return new_answers;
+            });
     const questions = quiz_state.questions.map((q, q_index) => {
-        const options: string[] = [];
-        const correct_index = Math.floor(Math.random() * (q.incorrect_answers.length + 1));
-        for (const incorrect of q.incorrect_answers) {
-            if (options.length === correct_index) {
-                options.push(q.correct_answer);
-            }
-            options.push(incorrect);
-        }
         return (
             <Question
                 key={nanoid()}
-                question={decodeHTMLEntities(q.text)}
-                options={options}
+                question={q.text}
+                options={q.options}
                 on_check={on_check(q_index)}
+                checked={answers[q_index]}
             />
         );
     });
