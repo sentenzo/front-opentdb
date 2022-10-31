@@ -39,10 +39,11 @@ const Quiz = ({ quiz_state, launch_new_quiz, check_quiz }: QuizProps) => {
     return (
         <div className="quiz">
             {questions}
-            <div className="quiz-footer">
+            {questions.length > 0 && <div className="quiz-footer">
                 <p className="status-line">You scored 3/5 correct answers</p>
                 <button>Check answers</button>
             </div>
+            }
         </div>
     )
 }
