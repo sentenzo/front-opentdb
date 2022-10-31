@@ -43,7 +43,6 @@ export class mutate {
         return (questions: OpenTdbDataQuestion[]) => {
             const new_questions = questions.map(question => {
                 const qtype: QQType = enumFromStringValue(QQType, question.type) || QQType.Multiple;
-                console.log(question.type);
                 let correct_option: number = 0;
                 const options: string[] = [];
                 if (qtype === QQType.Boolean

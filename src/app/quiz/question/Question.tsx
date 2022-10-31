@@ -6,10 +6,11 @@ type QuestionProps = {
     options: string[],
     on_check: (answer: number) => void,
     checked?: number,
+    correct_index?: number,
 }
 
 
-const Question = ({ question, options, on_check, checked }: QuestionProps) => {
+const Question = ({ question, options, on_check, checked, correct_index }: QuestionProps) => {
     const qname = nanoid();
     const opts = [];
 
@@ -23,6 +24,14 @@ const Question = ({ question, options, on_check, checked }: QuestionProps) => {
             id={opt_id}
             onChange={(e) => { on_check(index) }}
             checked={checked === index}
+            className={
+                correct_index === index
+                    ?
+                    "correct"
+                    :
+                    ""
+            }
+            disabled={correct_index !== undefined}
         />);
         opts.push(<label
             key={`l_${opt_id}`}
@@ -30,14 +39,14 @@ const Question = ({ question, options, on_check, checked }: QuestionProps) => {
         >{text}</label >);
     }
     return (
-        <div className="question">
+        <div className={correct_index === undefined ? "question" : "question verification"}>
             <h3>
                 {question}
             </h3>
             <div className="options">
                 {opts}
             </div>
-        </div>
+        </div >
     )
 
 };

@@ -36,6 +36,7 @@
     +label {
         border: 1px solid lighten($color-dark, 20%);
         color: lighten($color-dark, 20%);
+        cursor: default;
     }
 
     &:checked+label {
