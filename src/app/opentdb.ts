@@ -1,25 +1,4 @@
-//////////////////////
-// https://stackoverflow.com/a/41791818/2493536
-const entities: { [key: string]: string } = {
-    'amp': '&',
-    'apos': '\'',
-    '#x27': '\'',
-    '#x2F': '/',
-    '#39': '\'',
-    '#039': '\'',
-    '#47': '/',
-    'lt': '<',
-    'gt': '>',
-    'nbsp': ' ',
-    'quot': '"'
-}
-
-export function decodeHTMLEntities(text: string) {
-    return text.replace(/&([^;]+);/gm, function (match, entity) {
-        return entities[entity] || match
-    });
-}
-//////////////////////
+import he from "he";
 
 type OpenTdbData = {
     response_code: number,
@@ -42,9 +21,9 @@ export class OpenTdb {
             .then((response) => response.json())
             .then((data: OpenTdbData) => data.results)
             .then(questions => questions.map(q => {
-                q.question = decodeHTMLEntities(q.question);
-                q.correct_answer = decodeHTMLEntities(q.correct_answer);
-                q.incorrect_answers = q.incorrect_answers.map(decodeHTMLEntities);
+                q.question = he.decode(q.question);
+                q.correct_answer = he.decode(q.correct_answer);
+                q.incorrect_answers = q.incorrect_answers.map(e => he.decode(e));
                 return q;
             }))
             .then((questions: OpenTdbDataQuestion[]) => consumer(questions));
