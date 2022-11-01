@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/front-opentdb/static/css/main.b481baac.css",
-    "main.js": "/front-opentdb/static/js/main.aacc8115.js",
+    "main.js": "/front-opentdb/static/js/main.567a3276.js",
     "index.html": "/front-opentdb/index.html",
     "main.b481baac.css.map": "/front-opentdb/static/css/main.b481baac.css.map",
-    "main.aacc8115.js.map": "/front-opentdb/static/js/main.aacc8115.js.map"
+    "main.567a3276.js.map": "/front-opentdb/static/js/main.567a3276.js.map"
   },
   "entrypoints": [
     "static/css/main.b481baac.css",
-    "static/js/main.aacc8115.js"
+    "static/js/main.567a3276.js"
   ]
 }
