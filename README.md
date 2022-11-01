@@ -12,9 +12,6 @@ This one was made to consolidate my knowledge on React.
 
 It's a small frontend-only project, which utilizes [Trivia API](https://opentdb.com/api_config.php) (an open API for quizes).
 
-- [Description](#description)
-  - [Toolset:](#toolset)
-
 ## Description
 This is a one-page web-application to generate and pass quizes. It is takes random quiz questions from Trivia DB (via the API they provide).
 
