@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+<h1>Open Trivia DB frontend</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Published on GitHub Pages: [sentenzo.github.io/front-opentdb/](https://sentenzo.github.io/front-opentdb/)
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+![Screenshot](front-opentdb.png)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This one was made to consolidate my knowledge on React.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It's a small frontend-only project, which utilizes [Trivia API](https://opentdb.com/api_config.php) (an open API for quizes).
 
-### `npm test`
+- [Description](#description)
+  - [Toolset:](#toolset)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
+This is a one-page web-application to generate and pass quizes. It is takes random quiz questions from Trivia DB (via the API they provide).
 
-### `npm run build`
+The idea of the project was taken from [Scrimba React cours](https://scrimba.com/learn/learnreact). They've also provided a nice design template: [link (Figma)](https://www.figma.com/file/Re5nbvHAjPXG7wfby7CJbq/Quizzical-App).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Toolset:
+- Node.js + TypeScript + Sass
+- React + [`create-react-app`](https://create-react-app.dev/)
+- [Trivia API](https://opentdb.com/api_config.php)
+- GitHub Actions (to publish on GitHub Pages)
