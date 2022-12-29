@@ -1,4 +1,7 @@
+
 <h1>Open Trivia DB frontend</h1>
+
+[![CI](https://github.com/sentenzo/front-opentdb/actions/workflows/publish-static.yml/badge.svg?branch=github-pages)](https://github.com/sentenzo/front-opentdb/actions/workflows/publish-static.yml)
 
 Published on GitHub Pages: [sentenzo.github.io/front-opentdb/](https://sentenzo.github.io/front-opentdb/)
 
